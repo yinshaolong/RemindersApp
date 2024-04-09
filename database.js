@@ -9,6 +9,16 @@ let Database = {
       },
     ],
   },
+  alex: {
+    reminders: [
+      {
+        id: 2,
+        title: "Pick up laundry",
+        description: "From the dry cleaners",
+        completed: false,
+      },
+    ],
+  }
 };
 
 module.exports = Database;
