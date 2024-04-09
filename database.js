@@ -3,6 +3,7 @@ let Database = {
     reminders: [
       {
         id: 1,
+        // name:"cindy",
         title: "Grocery shopping",
         description: "Buy milk and bread from safeway",
         completed: false,
@@ -20,5 +21,6 @@ let Database = {
     ],
   }
 };
+
 
 module.exports = Database;
