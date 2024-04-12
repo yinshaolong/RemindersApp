@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome to Admin Page</h1>
+    <% sessions.forEach(session=> { %>
+            <p>session <%= session %> </p>
+            <p>sessionID <%= session.sessionID %></p>
+            <p>userID <%= session.userID %></p>
+            <a href="/auth/revoke/<%= session %>" class = "btn btn-danger">Revoke</a>
+
+    <% }) %>
+    <a href="/auth/logout" class = "btn btn-secondary">Logout</a>
+</body>
+</html>
