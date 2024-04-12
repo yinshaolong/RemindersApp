@@ -34,16 +34,14 @@ let authController = {
     // console.log("All sessions", all_sessions)
   },
   revoke: (req, res) => {
-const sessionId = req.params.id;
-console.log("Session ID: ", sessionId)
+    const sessionId = req.params.id;
+    console.log("Session ID: ", sessionId)
     req.sessionStore.destroy(sessionId, (err) => {
       if (err) {
-        console.log(err);
-        res.status(500).send({ error: 'Failed to destroy session' });
-      } else {
+        return console.log(err);
+      }
         console.log('Session destroyed successfully');
         res.redirect('/auth/admin');
-      }
     });
   }
 };
