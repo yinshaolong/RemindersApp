@@ -1,7 +1,10 @@
  <%- include ("../partials/navbar.ejs") %>  <!-- partial must be in brackets -->
 <div class="container">
-  <h1 class="page-header">Reminders</h1>
-
+  <div class="header">
+    <h1 class="page-header">Reminders</h1>
+    <a href="/auth/logout" class = "btn btn-secondary">Logout</a>
+  </div>
+  
 <ul class="list-group">
   <% reminders.forEach(function (reminderItem) { %>
     <li class="list-group-item">
@@ -17,5 +20,4 @@
     </li>
   <% }) %>
 </ul>
-    <a href="/auth/logout" class = "btn btn-secondary">Logout</a>
 </div>

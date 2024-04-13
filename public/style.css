@@ -147,7 +147,7 @@ footer.footer {
   background-position: center;
 }
 
-.admin {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
