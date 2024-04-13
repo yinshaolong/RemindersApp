@@ -13,7 +13,7 @@ let database = [
         description: "Buy milk and bread from safeway",
         completed: false,
         keyword: "shopping",
-        banner: "https://source.unsplash.com/random",
+        banner: `https://source.unsplash.com/random?shopping`,
       },
       {
         id: 2,
@@ -21,7 +21,7 @@ let database = [
         description: "Take the puppy for a walk around the block",
         completed: false,
         keyword: "dog",
-        banner: "https://source.unsplash.com/random",
+        banner: "https://source.unsplash.com/random?dog",
       },
       {
         id: 3,
@@ -29,7 +29,7 @@ let database = [
         description: "Biking in stanley park",
         completed: false,
         keyword: "bike",
-        banner: "https://source.unsplash.com/random",
+        banner: "https://source.unsplash.com/random?bike",
       },
       {
         id: 4,
@@ -37,7 +37,7 @@ let database = [
         description: "Swimming at the community pool",
         completed: false,
         keyword: "swimming",
-        banner: "https://source.unsplash.com/random",
+        banner: "https://source.unsplash.com/random?swimming",
       },
       {
         id: 5,
@@ -45,7 +45,7 @@ let database = [
         description: "Running at the beach",
         completed: true,
         keyword: "running",
-        banner: `https://api.unsplash.com/search/photos?page=1&query=${this.keyword}&client_id=${process.env.UNSPLASH_ACCESS_KEY}`,
+        banner: `https://source.unsplash.com/random?running`,
       }
     ],
   },
@@ -62,7 +62,7 @@ let database = [
         description: "stanley park",
         completed: false,
         keyword: "biking",
-        banner: "https://source.unsplash.com/random",
+        banner: "https://source.unsplash.com/random?biking",
       },
     ],
   },
@@ -79,7 +79,7 @@ let database = [
         description: "Buy milk and bread from safeway",
         completed: false,
         keyword: "shopping",
-        banner: "https://source.unsplash.com/random",
+        banner: "https://source.unsplash.com/random?shopping",
       },
     ],
   },
@@ -96,7 +96,7 @@ let database = [
         description: "Buy milk and bread from safeway",
         completed: false,
         keyword: "shopping",
-        banner: "https://source.unsplash.com/random",
+        banner: "https://source.unsplash.com/random?shopping",
       },
     ],
   }

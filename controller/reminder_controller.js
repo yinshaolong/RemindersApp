@@ -51,8 +51,8 @@ let remindersController = {
       keyword: req.body.keyword,
       banner: await remindersController.imageGen(req.body.keyword)
     };
-    console.log(reminder.banner)
-    console.log("in create reminders keyword", reminders.keyword)
+    // console.log(reminder.banner)
+    // console.log("in create reminders keyword", reminders.keyword)
     const user = userModel.findById(req.user.id)
     user.reminders.push(reminder);
     res.redirect("/reminders");
@@ -68,16 +68,15 @@ let remindersController = {
 
  update: (req, res) => {
     let reminderToFind = req.params.id;
-    console.log("body keyword", req.body.keyword)
+    // console.log("body keyword", req.body.keyword)
     
-    req.user.reminders.find(function (reminder) {
+    req.user.reminders.find(async (reminder) => {
       if (reminder.id == reminderToFind) {
         reminder.title = req.body.title;
         reminder.description = req.body.description;
         reminder.keyword = req.body.keyword;
         reminder.completed = true ? req.body.completed === "true" : false;
-        console.log("reminder: ", reminder)
-        console.log("body keyword in update: ", reminder.keyword)
+        reminder.banner = await remindersController.imageGen(req.body.keyword)
         return reminder.id
       }
     });

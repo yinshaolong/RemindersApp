@@ -48,6 +48,7 @@ header.masthead h1 {
     padding-top: 12rem;
     padding-bottom: 12rem;
   }
+
   header.masthead h1 {
     font-size: 3rem;
   }
@@ -130,7 +131,18 @@ footer.footer {
   padding-bottom: 4rem;
 }
 
-.form-signin .checkbox{
+.form-signin .checkbox {
   margin-bottom: 10px;
   margin-top: 10px;
+}
+
+.container-single-reminder {
+  padding: 0%
+}
+
+.banner {
+  width: 115%;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
 }
