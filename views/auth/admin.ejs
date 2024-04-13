@@ -4,16 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
 </head>
 <body>
-    <h1>Welcome to Admin Page</h1>
+    <div class = "admin">
+        <h1>Admin</h1>
+        <a href="/auth/logout" class="btn btn-secondary">Logout</a>
 
-    <% sessions.forEach(session => { %>
-            <p>sessionID <%= session.sessionId %></p>
-            <p>userID <%= session.userId %></p>
-            <a href="/auth/revoke/<%= session.sessionId %>" class = "btn btn-danger">Revoke</a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Session ID</th>
+                <th>User ID</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% sessions.forEach(session => { %>
+                <tr>
+                    <td><%= session.sessionId %></td>
+                    <td><%= session.userId %></td>
+                    <td><a href="/auth/revoke/<%= session.sessionId %>" class="btn btn-danger">Revoke</a></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
 
-    <% }) %>
-    <a href="/auth/logout" class = "btn btn-secondary">Logout</a>
 </body>
 </html>
