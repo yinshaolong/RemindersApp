@@ -7,11 +7,11 @@
 </head>
 <body>
     <h1>Welcome to Admin Page</h1>
-    <% sessions.forEach(session=> { %>
-            <p>session <%= session %> </p>
-            <p>sessionID <%= session.sessionID %></p>
-            <p>userID <%= session.userID %></p>
-            <a href="/auth/revoke/<%= session %>" class = "btn btn-danger">Revoke</a>
+
+    <% sessions.forEach(session => { %>
+            <p>sessionID <%= session.sessionId %></p>
+            <p>userID <%= session.userId %></p>
+            <a href="/auth/revoke/<%= session.sessionId %>" class = "btn btn-danger">Revoke</a>
 
     <% }) %>
     <a href="/auth/logout" class = "btn btn-secondary">Logout</a>

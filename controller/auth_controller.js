@@ -23,18 +23,29 @@ let authController = {
   },
   admin: (req, res) => {
     let all_sessions = [];
+    
     req.sessionStore.all(function(err, sessions){
-      for (let session in sessions){
-        console.log("session in admin: ", session)
-        all_sessions.push(session)
+      for (let sessionID in sessions){
+      let userID = sessions[sessionID].passport.user;
+        console.log("user id in admin: ", userID)
+        console.log("session in admin: ", sessionID)
+        if (userID !== req.user.id){
+          all_sessions.push({"sessionId": sessionID, "userId": userID})
+          console.log("all sessions: ", all_sessions)
+        }
       }
       console.log(all_sessions)
+      if (all_sessions[0]){
+        console.log("first session: ", all_sessions[0])
+        console.log("first session id: ", all_sessions[0]['sessionId'])
+      }
       res.render("auth/admin", {sessions: all_sessions})
     });
-    // console.log("All sessions", all_sessions)
   },
+
   revoke: (req, res) => {
     const sessionId = req.params.id;
+    // console.log("User: ", user)
     console.log("Session ID: ", sessionId)
     req.sessionStore.destroy(sessionId, (err) => {
       if (err) {
