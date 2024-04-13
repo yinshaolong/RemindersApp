@@ -1,15 +1,17 @@
 # Reminder App
 # Shaolong (John) Yin
-- ** Reminder App** a reminder app that allows users to create, edit, and delete reminders.
+- **Reminder App**
+  -  a reminder app that allows users to create, edit, and delete reminders.
 - **Technologies Used**: Express, Node.js, EJS
 - **To Run**: 
   - Clone the repository
   - Run `npm install`
-  - Run `npm start`
+  - Run `nodemon`
   - Go to `localhost:3001` or `http://localhost:3001/reminders` in your browser
 
 
--**Allocation of Work**
+**Allocation of Work**
+    
     - Shaolong (John) Yin: 
         - Passport Local Authentication
         - Admin Functionality 
