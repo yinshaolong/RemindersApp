@@ -45,4 +45,11 @@ passport.deserializeUser(function (id, done) {
   }
 });
 
-module.exports = passport.use(localLogin)//.use(githubLogin);
+// Use the local strategy for authentication
+passport.use(localLogin)//.use(githubLogin);
+
+// Export the passport instance and a helper method to use strategies for authentication
+module.exports = {
+  passport,
+  authenticate: (strategy, options) => passport.authenticate(strategy, options),
+};
