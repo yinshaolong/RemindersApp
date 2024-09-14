@@ -1,27 +1,30 @@
+<%- include ("../partials/navbar.ejs") %>
 <div class="container-single-reminder">
-    <img class="banner", src="<%= reminderItem.banner %>" alt="Banner Image">
-  </div>
-  <h1 class="page-header">Reminders</h1>
-<!-- <pre><%= reminderItem.banner %></pre> -->
-    <ul class="list-group">
-      <li class="list-group-item">
-        <h3><strong><%= reminderItem.title %>: </strong></h3>
-        <h4><%= reminderItem.description %></h4>
-        <h4>Completed:
-          <% if (reminderItem.completed == true) { %>
-            <span class="label label-success">True</span>
-          <% } else if (reminderItem.completed == false) { %>
-            <span class="label label-danger">False</span>
-          <% } %>
-        </h4>
-
-        <a class="btn btn-warning" href=<%= "/reminder/" + reminderItem.id + "/edit" %>>Edit</a>
-
-        <form class="deleteForm "method="POST" action=<%= "/reminder/delete/" + reminderItem.id %>>
-          <button type="submit" class="btn btn-danger">Delete</button>
-        </form>
-
-      </li>
-    </ul>
-
+    <img class="banner" src="<%= reminderItem.banner %>" alt="Banner Image">
 </div>
+<h1 class="page-header">Reminders</h1>
+
+<!-- <pre><%= reminderItem.banner %></pre> -->
+
+<ul class="list-group">
+    <li class="list-group-item">
+        <div class="reminder-title"><strong><%= reminderItem.title %></strong></div>
+        <div class="reminder-description"><%= reminderItem.description %></div>
+        <div class="reminder-completed">
+            Completed:
+            <% if (reminderItem.completed) { %>
+                <span class="badge badge-success">True</span>
+            <% } else { %>
+                <span class="badge badge-danger">False</span>
+            <% } %>
+        </div>
+
+        <a class="btn btn-warning" href="<%= "/reminder/" + reminderItem.id + "/edit" %>">Edit</a>
+
+        <form class="deleteForm" method="POST" action="<%= "/reminder/delete/" + reminderItem.id %>">
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+    </li>
+</ul>
+
+
