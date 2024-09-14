@@ -1,18 +1,19 @@
 const express = require("express");
 const passport = require("../middleware/passport");
-const { forwardAuthenticated, isAdmin } = require("../middleware/checkAuth");
-const { admin, revoke } = require('../controllers/adminController');
+const {forwardAuthenticated, isAdmin} = require("../middleware/checkAuth");
+const authController = require("../controller/auth_controller");
 const router = express.Router();
 
-router.get("/login", forwardAuthenticated, (req, res) => res.render("login"));
-router.get('/auth/admin', isAdmin, admin);
-router.post(
-  "/login",
-  passport.authenticate("local", {
-    successRedirect: "/dashboard",
-    failureRedirect: "/auth/login",
-  })
-);
+router.get('/admin', isAdmin, authController.admin);
+
+router.get("/login", forwardAuthenticated, authController.login);
+router.post("/login", authController.loginSubmit);
+router.get('/register', forwardAuthenticated, authController.register)
+router.post('/register', authController.registerSubmit)
+router.get("/logout", authController.logout);
+
+router.get('/revoke/:id', authController.revoke);
+router.post('/revoke/:id', authController.revoke);
 
 // router.get('/github', passport.authenticate('github', { scope: [ 'user:email' ] }));
 
@@ -23,10 +24,5 @@ router.post(
 //   }),
 // );
 
-
-router.get("/logout", (req, res) => {
-  req.logout();
-  res.redirect("/auth/login");
-});
 
 module.exports = router;
