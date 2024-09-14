@@ -3,8 +3,7 @@ const session = require("express-session");
 const app = express(); //→ returns a web server (app = server)
 const path = require("path");
 const ejsLayouts = require("express-ejs-layouts");
-const reminderController = require("./controller/reminder_controller");
-const authRouter = require("./routes/authroute");
+const authRouter = require("./routes/authRoute");
 const indexRouter = require("./routes/indexRoute");
 const reminderRoutes = require("./routes/reminderRoutes");
 
