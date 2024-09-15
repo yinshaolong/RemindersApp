@@ -6,6 +6,7 @@ const ejsLayouts = require("express-ejs-layouts");
 const authRouter = require("./routes/authRoute");
 const indexRouter = require("./routes/indexRoute");
 const reminderRoutes = require("./routes/reminderRoutes");
+const reminderController = require("./controller/reminder_controller");
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(
@@ -36,7 +37,8 @@ app.use('/', indexRouter);
 // This includes routes like /auth/login, /auth/register, etc.
 app.use('/auth', authRouter);
 // Routes handled by authRouter
-app.use('/reminders', reminderRoutes);
+app.use('/reminder', reminderRoutes);
+app.get("/reminders", reminderController.list);
 
 // NOTE: Port 8080 is used because AWS Elastic Beanstalk (EB) defaults to using this port.
 // When deploying to EB, the load balancer will forward traffic to the application's port 8080.

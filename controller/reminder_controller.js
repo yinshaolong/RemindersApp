@@ -32,9 +32,9 @@ let remindersController = {
     const userId = req.user.id;
 
     let searchResult = req.user.reminders.find(function (reminder) {
-      return reminder.id == reminderToFind;
+      return reminder.id === reminderToFind;
     });
-    if (searchResult != undefined) {
+    if (searchResult !== undefined) {
       res.render("reminder/single-reminder", {reminderItem: searchResult});
     } else {
       res.render("reminder/index", {reminders: req.user.reminders});
@@ -60,7 +60,7 @@ let remindersController = {
   edit: (req, res) => {
     let reminderToFind = req.params.id;
     let searchResult = req.user.reminders.find((reminder) => {
-      return reminder.id == reminderToFind;
+      return reminder.id === reminderToFind;
     });
     res.render("reminder/edit", {reminderItem: searchResult});
   },
@@ -70,11 +70,11 @@ let remindersController = {
     // console.log("body keyword", req.body.keyword)
 
     req.user.reminders.find(async (reminder) => {
-      if (reminder.id == reminderToFind) {
+      if (reminder.id === reminderToFind) {
         reminder.title = req.body.title;
         reminder.description = req.body.description;
         reminder.keyword = req.body.keyword;
-        reminder.completed = true ? req.body.completed === "true" : false;
+        reminder.completed = req.body.completed === "true";
         reminder.banner = await remindersController.imageGen(req.body.keyword)
         return reminder.id
       }
@@ -87,7 +87,7 @@ let remindersController = {
     // implementation here 👈
     let reminderToFind = req.params.id;
     let index = req.user.reminders.findIndex(function (reminder) {
-      return reminder.id == reminderToFind;
+      return reminder.id === reminderToFind;
     });
     req.user.reminders.splice(index, 1);
     res.redirect("/reminders");
