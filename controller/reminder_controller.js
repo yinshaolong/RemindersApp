@@ -6,11 +6,20 @@ let {userModel} = require("../models/userModel");
 
 let remindersController = {
   imageGen: async (keyword) => {
-    const unsplashURL = `https://api.unsplash.com/search/photos?page=1&query=${keyword}&client_id=${process.env.UNSPLASH_ACCESS_KEY}`;
+    const unsplashURL = keyword
+      ? `https://api.unsplash.com/search/photos?page=1&query=${keyword}&client_id=${process.env.UNSPLASH_ACCESS_KEY}`
+      : `https://api.unsplash.com/photos/?client_id=${process.env.UNSPLASH_ACCESS_KEY}`;
     const response = await fetch(unsplashURL);
     const data = await response.json();
-    const randomIndex = Math.floor(Math.random() * data.results.length);
-    return data.results[randomIndex].urls.regular;
+
+    // Check results or image length exist
+    const imageArray = keyword ? data.results : data;
+    if (imageArray.length === 0) {
+      throw new Error("No images found");
+    }
+    console.log(imageArray.length);
+    const randomIndex = Math.floor(Math.random() * imageArray.length);
+    return imageArray[randomIndex].urls.regular;
   },
 
   list: (req, res) => {
@@ -28,7 +37,7 @@ let remindersController = {
   },
 
   listOne: (req, res) => {
-    let reminderToFind = req.params.id;
+    let reminderToFind = Number(req.params.id);
     const userId = req.user.id;
 
     let searchResult = req.user.reminders.find(function (reminder) {
