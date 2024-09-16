@@ -1,3 +1,4 @@
+<%- include ("../partials/navbar.ejs") %>
 <div class="container">
   <h1 class="page-header">Edit</h1>
   <form action=<%= "/reminder/update/" + reminderItem.id %> method="POST">
@@ -18,7 +19,7 @@
       <label for="completed">Completed</label>
       <div class="radio">
         <label>
-          <% if (reminderItem.completed == true) { %>
+          <% if (reminderItem.completed) { %>
             <input type="radio" name="completed" id="true" value="true" checked="checked">
           <% } else { %>
             <input type="radio" name="completed" id="true" value="true">
@@ -28,7 +29,7 @@
       </div>
       <div class="radio">
         <label>
-          <% if (reminderItem.completed == false) { %>
+          <% if (!reminderItem.completed) { %>
             <input type="radio" name="completed" id="false" value="false" checked="checked">
           <% } else { %>
             <input type="radio" name="completed" id="false" value="false">
@@ -37,6 +38,6 @@
         </label>
       </div>
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>

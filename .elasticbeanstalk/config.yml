@@ -1,0 +1,18 @@
+branch-defaults:
+  main:
+    environment: Reminders-env
+    group_suffix: null
+global:
+  application_name: reminders
+  branch: null
+  default_ec2_keyname: aws-eb
+  default_platform: Node.js 20
+  default_region: us-west-1
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: null
+  repository: null
+  sc: git
+  workspace_type: Application

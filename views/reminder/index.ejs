@@ -8,15 +8,20 @@
 <ul class="list-group">
   <% reminders.forEach(function (reminderItem) { %>
     <li class="list-group-item">
-      <strong><%= reminderItem.title %>: </strong>
-      <%= reminderItem.description %>
-      || Completed:
-      <% if (reminderItem.completed == true) { %>
-        <span class="badge badge-success">True</span>
-      <% } else if (reminderItem.completed == false) { %>
-        <span class="badge badge-danger">False</span>
-      <% } %>
-      <a class="pull-right" href=<%= "/reminder/" + reminderItem.id %>>View</a>
+      <div>
+        <strong><%= reminderItem.title %>:</strong>
+        <p><%= reminderItem.description %></p>
+        <div>
+          Completed:
+          <% if (reminderItem.completed) { %>
+            <span class="badge badge-success">True</span>
+          <% } else { %>
+            <span class="badge badge-danger">False</span>
+          <% } %>
+        </div>
+
+        <a class="btn btn-primary pull-right" href="<%= "/reminder/" + reminderItem.id %>">View</a>
+      </div>
     </li>
   <% }) %>
 </ul>
